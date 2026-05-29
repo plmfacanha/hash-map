@@ -2,7 +2,7 @@ class HashMap {
   constructor() {
     this.loadFactor = 0.75;
     this.capacity = 16;
-    this.bucket = new Array(this.capacity).fill(null);
+    this.buckets = new Array(this.capacity).fill(null);
   }
 
   _hash(key) {
@@ -17,7 +17,7 @@ class HashMap {
   }
 
   set(key, value) {
-    let index = this._hash(key); // find which index in the bucket array the value is
+    let index = this._hash(key); // find in which array index (bucket) the value is
 
     if (index < 0 || index >= buckets.length) {
       throw new Error("Trying to access index out of bounds");
