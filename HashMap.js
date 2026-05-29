@@ -2,7 +2,7 @@ class HashMap {
   constructor() {
     this.loadFactor = 0.75;
     this.capacity = 16;
-    this.bucket = new Array(this.capacity);
+    this.bucket = new Array(this.capacity).fill(null);
   }
 
   _hash(key) {
@@ -21,6 +21,12 @@ class HashMap {
 
     if (index < 0 || index >= buckets.length) {
       throw new Error("Trying to access index out of bounds");
+    }
+
+    if (this.bucket[index] === null) {
+      this.bucket[index] = value;
+    } else {
+      const head = this.bucket[index];
     }
   }
 }
