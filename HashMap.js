@@ -5,7 +5,7 @@ class HashMap {
     this.bucket = new Array(this.capacity);
   }
 
-  hash(key) {
+  _hash(key) {
     let hashCode = 0;
 
     const primeNumber = 31;
