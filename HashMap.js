@@ -15,6 +15,8 @@ class HashMap {
 
     return hashCode;
   }
+
+  set(key, value) {}
 }
 
 const hashMap = new HashMap();
