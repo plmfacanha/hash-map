@@ -26,7 +26,7 @@ class HashMap {
     if (this.bucket[index] === null) {
       // TODO: implement linkedlist where head and tail would be a new node with the value passed in
     } else {
-      // update the tail of the linked list with the new Node (create a new Node with the value passed in)
+      // update the tail of the linked list with the new Node
     }
   }
 }
