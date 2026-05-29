@@ -16,7 +16,13 @@ class HashMap {
     return hashCode;
   }
 
-  set(key, value) {}
+  set(key, value) {
+    let index = this._hash(key); // find which index in the bucket array the value is
+
+    if (index < 0 || index >= buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+  }
 }
 
 const hashMap = new HashMap();
