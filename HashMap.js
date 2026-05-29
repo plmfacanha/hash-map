@@ -24,9 +24,9 @@ class HashMap {
     }
 
     if (this.bucket[index] === null) {
-      this.bucket[index] = value;
+      // TODO: implement linkedlist where head and tail would be a new node with the value passed in
     } else {
-      const head = this.bucket[index];
+      // update the tail of the linked list with the new Node (create a new Node with the value passed in)
     }
   }
 }
