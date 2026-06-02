@@ -19,10 +19,10 @@ class HashMap {
   }
 
   set(key, value) {
-    let index = this._hash(key); // find in which array index (bucket) the node will be stored
+    let bucket = this._hash(key); // find in which array index (bucket) the node will be stored
 
-    if (index < 0 || index >= this.buckets.length) {
-      throw new Error("Trying to access index out of bounds");
+    if (bucket < 0 || bucket >= this.buckets.length) {
+      throw new Error("Trying to access bucket out of bounds");
     }
 
     const data = {
@@ -31,13 +31,17 @@ class HashMap {
     };
     const newNode = new Node(data);
 
-    if (this.buckets[index] === null) {
-      this.buckets[index] = newNode;
-    } else {
-      // update the tail of the linked list with the new Node
-      this.buckets[index].next = newNode;
+    if (this.buckets[bucket] === null) {
+      const list = new LinkedList();
 
-      console.log(this.buckets[index]);
+      list.head = newNode;
+      list.tail = newNode;
+      this.buckets[bucket] = list;
+    } else {
+      const list = this.buckets[bucket];
+
+      list.tail.next = newNode;
+      list.tail = newNode;
     }
   }
 }
@@ -45,3 +49,5 @@ class HashMap {
 const hashMap = new HashMap();
 
 hashMap.set("pedro", "student");
+hashMap.set("carlos", "artist");
+hashMap.set("lucas", "artist");
