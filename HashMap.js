@@ -1,3 +1,4 @@
+import Node from "./Node.js";
 class HashMap {
   constructor() {
     this.loadFactor = 0.75;
@@ -19,16 +20,21 @@ class HashMap {
   set(key, value) {
     let index = this._hash(key); // find in which array index (bucket) the value will be
 
-    if (index < 0 || index >= buckets.length) {
+    if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bounds");
     }
 
-    if (this.bucket[index] === null) {
-      // TODO: implement linkedlist where head and tail would be a new node with the value passed in
-    } else {
-      // update the tail of the linked list with the new Node
-    }
+    const newNode = new Node(value);
+
+    console.log(newNode);
+
+    // if (this.bucket[index] === null) {
+    // } else {
+    //   // update the tail of the linked list with the new Node
+    // }
   }
 }
 
 const hashMap = new HashMap();
+
+hashMap.set("pedro", "student");
