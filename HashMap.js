@@ -17,7 +17,7 @@ class HashMap {
   }
 
   set(key, value) {
-    let index = this._hash(key); // find in which array index (bucket) the value is
+    let index = this._hash(key); // find in which array index (bucket) the value will be
 
     if (index < 0 || index >= buckets.length) {
       throw new Error("Trying to access index out of bounds");
