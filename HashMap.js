@@ -44,6 +44,30 @@ class HashMap {
       list.tail = newNode;
     }
   }
+
+  get(key) {
+    let bucket = this._hash(key); // hash the key to find which bucket its stored in
+
+    if (bucket < 0 || bucket >= this.buckets.length) {
+      throw new Error("Trying to access bucket out of bounds");
+    }
+
+    let list = this.buckets[bucket];
+
+    if (list === null) {
+      return;
+    } else {
+      let curr = list.head;
+
+      while (curr !== null) {
+        if (curr.data.name === key) {
+          return curr.data.occupation;
+        }
+
+        curr = curr.next;
+      }
+    }
+  }
 }
 
 const hashMap = new HashMap();
@@ -51,3 +75,4 @@ const hashMap = new HashMap();
 hashMap.set("pedro", "student");
 hashMap.set("carlos", "artist");
 hashMap.set("lucas", "artist");
+hashMap.get("lucas");
