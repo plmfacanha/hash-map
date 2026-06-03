@@ -46,13 +46,13 @@ class HashMap {
   }
 
   get(key) {
-    let bucket = this._hash(key); // hash the key to find which bucket its stored in
+    const bucket = this._hash(key); // hash the key to find which bucket its stored in
 
     if (bucket < 0 || bucket >= this.buckets.length) {
       throw new Error("Trying to access bucket out of bounds");
     }
 
-    let list = this.buckets[bucket];
+    const list = this.buckets[bucket];
 
     if (list === null) {
       return;
