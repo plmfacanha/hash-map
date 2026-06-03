@@ -67,6 +67,8 @@ class HashMap {
         curr = curr.next;
       }
     }
+
+    return null;
   }
 }
 
