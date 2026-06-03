@@ -77,4 +77,6 @@ const hashMap = new HashMap();
 hashMap.set("pedro", "student");
 hashMap.set("carlos", "artist");
 hashMap.set("lucas", "artist");
-hashMap.get("lucas");
+console.log(hashMap.get("lucas"));
+hashMap.set("sunshine", "photographer");
+console.log(hashMap.get("sunshine"));
