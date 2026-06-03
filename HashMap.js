@@ -54,21 +54,51 @@ class HashMap {
 
     const list = this.buckets[bucket];
 
-    if (list === null) {
-      return;
-    } else {
-      let curr = list.head;
+    if (list === null) return;
 
-      while (curr !== null) {
-        if (curr.data.name === key) {
-          return curr.data.occupation;
-        }
+    let curr = list.head;
 
-        curr = curr.next;
+    while (curr !== null) {
+      if (curr.data.name === key) {
+        return curr.data.occupation;
       }
+
+      curr = curr.next;
     }
 
     return null;
+  }
+
+  has(key) {
+    let isTrue = this.get(key);
+
+    return isTrue ? true : false;
+  }
+
+  remove(key) {
+    const bucket = this._hash(key);
+
+    if (bucket < 0 || bucket >= this.buckets.length) {
+      throw new Error("Trying to access bucket out of bounds");
+    }
+
+    const list = this.buckets[bucket];
+
+    if (list === null) return false;
+
+    let head = list.head;
+    let tail = list.tail;
+
+    if (head.data.name === key && tail.data.name === key) {
+      list.head = null;
+      list.tail = null;
+      return true;
+    }
+
+    if (head.data.name === key) {
+      list.head = list.head.next;
+      return true;
+    }
   }
 }
 
@@ -80,3 +110,4 @@ hashMap.set("lucas", "artist");
 console.log(hashMap.get("lucas"));
 hashMap.set("sunshine", "photographer");
 console.log(hashMap.get("sunshine"));
+console.log(hashMap.has("caio"));
