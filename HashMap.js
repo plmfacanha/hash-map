@@ -114,6 +114,7 @@ class HashMap {
         return true;
       }
 
+      prev = prev.next;
       curr = curr.next;
     }
 
