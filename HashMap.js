@@ -101,17 +101,29 @@ class HashMap {
     }
 
     // considering the list.head is not the same as key
+    let prev = head;
     head = head.next;
-    while (head !== null) {
-      head = head.next;
+    let curr = head;
+
+    while (curr !== null) {
+      if (curr.data.name === key) {
+        prev.next = curr.next;
+        if (curr === tail) {
+          list.tail = prev;
+        }
+        return true;
+      }
+
+      curr = curr.next;
     }
 
-    console.log(head);
+    return false;
   }
 }
 
 const hashMap = new HashMap();
 
-hashMap.set("x", "student");
-hashMap.set("y", "student");
-console.log(hashMap.remove("y"));
+hashMap.set("pedro", "student");
+hashMap.set("carlos", "student");
+hashMap.set("lena", "student");
+hashMap.remove("carlos");
