@@ -120,6 +120,24 @@ class HashMap {
 
     return false;
   }
+
+  length() {
+    let count = 0;
+    for (let i = 0; i < this.buckets.length; ++i) {
+      let currList = this.buckets[i];
+
+      if (currList !== null) {
+        let currNode = currList.head;
+
+        while (currNode !== null) {
+          ++count;
+          currNode = currNode.next;
+        }
+      }
+    }
+
+    return count;
+  }
 }
 
 const hashMap = new HashMap();
@@ -127,4 +145,5 @@ const hashMap = new HashMap();
 hashMap.set("pedro", "student");
 hashMap.set("carlos", "student");
 hashMap.set("lena", "student");
-hashMap.remove("carlos");
+hashMap.set("marlon", "policeman");
+console.log(hashMap.length());
