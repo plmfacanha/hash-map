@@ -101,15 +101,17 @@ class HashMap {
     }
 
     // considering the list.head is not the same as key
+    head = head.next;
+    while (head !== null) {
+      head = head.next;
+    }
+
+    console.log(head);
   }
 }
 
 const hashMap = new HashMap();
 
-hashMap.set("pedro", "student");
-hashMap.set("carlos", "artist");
-hashMap.set("lucas", "artist");
-console.log(hashMap.get("lucas"));
-hashMap.set("sunshine", "photographer");
-console.log(hashMap.get("sunshine"));
-console.log(hashMap.has("caio"));
+hashMap.set("x", "student");
+hashMap.set("y", "student");
+console.log(hashMap.remove("y"));
