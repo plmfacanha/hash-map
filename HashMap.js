@@ -99,6 +99,8 @@ class HashMap {
       list.head = list.head.next;
       return true;
     }
+
+    // considering the list.head is not the same as key
   }
 }
 
