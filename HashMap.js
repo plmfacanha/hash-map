@@ -102,8 +102,7 @@ class HashMap {
 
     // considering the list.head is not the same as key
     let prev = head;
-    head = head.next;
-    let curr = head;
+    let curr = head.next;
 
     while (curr !== null) {
       if (curr.data.name === key) {
@@ -138,6 +137,10 @@ class HashMap {
 
     return count;
   }
+
+  clear() {
+    this.buckets.fill(null);
+  }
 }
 
 const hashMap = new HashMap();
@@ -145,5 +148,8 @@ const hashMap = new HashMap();
 hashMap.set("pedro", "student");
 hashMap.set("carlos", "student");
 hashMap.set("lena", "student");
+console.log(hashMap.remove("lena"));
 hashMap.set("marlon", "policeman");
+console.log(hashMap.length());
+hashMap.clear();
 console.log(hashMap.length());
