@@ -161,6 +161,28 @@ class HashMap {
 
     return arr;
   }
+
+  values() {
+    let arr = [];
+
+    for (let i = 0; i < this.buckets.length; ++i) {
+      let currList = this.buckets[i];
+
+      if (currList !== null) {
+        let currNode = currList.head;
+
+        while (currNode !== null) {
+          if (!arr.includes(currNode.data.occupation)) {
+            arr.push(currNode.data.occupation);
+          }
+
+          currNode = currNode.next;
+        }
+      }
+    }
+
+    return arr;
+  }
 }
 
 const hashMap = new HashMap();
@@ -172,3 +194,4 @@ console.log(hashMap.remove("lena"));
 hashMap.set("marlon", "policeman");
 console.log(hashMap.length());
 console.log(hashMap.keys());
+console.log(hashMap.values());
