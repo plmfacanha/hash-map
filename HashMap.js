@@ -183,15 +183,39 @@ class HashMap {
 
     return arr;
   }
+
+  entries() {
+    let arr = [];
+
+    for (let i = 0; i < this.buckets.length; ++i) {
+      let currList = this.buckets[i];
+
+      if (currList !== null) {
+        let currNode = currList.head;
+
+        while (currNode !== null) {
+          arr.push([currNode.data.name, currNode.data.occupation]);
+
+          currNode = currNode.next;
+        }
+      }
+    }
+
+    return arr;
+  }
 }
 
-const hashMap = new HashMap();
+const test = new HashMap();
 
-hashMap.set("pedro", "student");
-hashMap.set("carlos", "student");
-hashMap.set("lena", "student");
-console.log(hashMap.remove("lena"));
-hashMap.set("marlon", "policeman");
-console.log(hashMap.length());
-console.log(hashMap.keys());
-console.log(hashMap.values());
+test.set("apple", "red");
+test.set("banana", "yellow");
+test.set("carrot", "orange");
+test.set("dog", "brown");
+test.set("elephant", "gray");
+test.set("frog", "green");
+test.set("grape", "purple");
+test.set("hat", "black");
+test.set("ice cream", "white");
+test.set("jacket", "blue");
+test.set("kite", "pink");
+test.set("lion", "golden");
