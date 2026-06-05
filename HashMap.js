@@ -141,6 +141,26 @@ class HashMap {
   clear() {
     this.buckets.fill(null);
   }
+
+  keys() {
+    let arr = [];
+
+    for (let i = 0; i < this.buckets.length; ++i) {
+      let currList = this.buckets[i];
+
+      if (currList !== null) {
+        let currNode = currList.head;
+
+        while (currNode !== null) {
+          arr.push(currNode.data.name);
+
+          currNode = currNode.next;
+        }
+      }
+    }
+
+    return arr;
+  }
 }
 
 const hashMap = new HashMap();
@@ -151,5 +171,4 @@ hashMap.set("lena", "student");
 console.log(hashMap.remove("lena"));
 hashMap.set("marlon", "policeman");
 console.log(hashMap.length());
-hashMap.clear();
-console.log(hashMap.length());
+console.log(hashMap.keys());
