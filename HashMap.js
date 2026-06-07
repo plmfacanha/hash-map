@@ -39,8 +39,6 @@ class HashMap {
       this.buckets[bucket] = list;
     } else {
       const list = this.buckets[bucket];
-      let loadLevel = this.loadFactor * this.capacity;
-      let currCapacity = 0;
 
       let currNode = list.head;
 
@@ -49,12 +47,28 @@ class HashMap {
           currNode.data.occupation = newNode.data.occupation;
           return;
         }
-        ++fullCapacity;
         currNode = currNode.next;
       }
 
       list.tail.next = newNode;
       list.tail = newNode;
+    }
+
+    if (this.length() > this.loadFactor * this.capacity) {
+      this.capacity *= 2;
+      const oldBuckets = this.buckets;
+      this.buckets = new Array(this.capacity).fill(null);
+
+      for (const bucket of oldBuckets) {
+        if (bucket !== null) {
+          let currNode = bucket.head;
+
+          while (currNode !== null) {
+            this.set(currNode.data.name, currNode.data.occupation);
+            currNode = currNode.next;
+          }
+        }
+      }
     }
   }
 
@@ -236,3 +250,6 @@ test.set("kite", "golden");
 test.set("lion", "pink");
 
 console.log(test.length());
+
+test.set("moon", "silver");
+console.log(test);
